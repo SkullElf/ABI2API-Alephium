@@ -1,0 +1,86 @@
+{
+    "name": "Staking",
+    "endpoints": [
+        {
+            "name": "stakingAccountExists",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "staker",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "Bool"
+                }
+            ],
+            "endpointIndex": 0
+        },
+        {
+            "name": "getStakingAccount",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "staker",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "ByteVec"
+                }
+            ],
+            "endpointIndex": 1
+        },
+        {
+            "name": "getTokenId",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "ByteVec"
+                }
+            ],
+            "endpointIndex": 8
+        },
+        {
+            "name": "getRewardsTokenId",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "ByteVec"
+                }
+            ],
+            "endpointIndex": 9
+        },
+        {
+            "name": "earned",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "acc",
+                    "type": "ByteVec"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "U256"
+                }
+            ],
+            "endpointIndex": 12
+        },
+        {
+            "name": "calculateRewardPerToken",
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "U256"
+                }
+            ],
+            "endpointIndex": 13
+        }
+    ]
+}

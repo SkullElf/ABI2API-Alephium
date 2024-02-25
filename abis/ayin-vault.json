@@ -1,0 +1,114 @@
+{
+    "name": "Vault",
+    "endpoints": [
+        {
+            "name": "getSymbol",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "ByteVec"
+                }
+            ],
+            "endpointIndex": 0
+        },
+        {
+            "name": "getName",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "ByteVec"
+                }
+            ],
+            "endpointIndex": 1
+        },
+        {
+            "name": "getDecimals",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "U256"
+                }
+            ],
+            "endpointIndex": 2
+        },
+        {
+            "name": "getTotalSupply",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "U256"
+                }
+            ],
+            "endpointIndex": 3
+        },
+        {
+            "name": "getTokenId",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "ByteVec"
+                }
+            ],
+            "endpointIndex": 6
+        },
+        {
+            "name": "earning",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "U256"
+                }
+            ],
+            "endpointIndex": 7
+        },
+        {
+            "name": "getFeeTo",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "Address"
+                }
+            ],
+            "endpointIndex": 9
+        },
+        {
+            "name": "withdrawalFee",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "shares",
+                    "type": "U256"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "U256"
+                }
+            ],
+            "endpointIndex": 12
+        },
+        {
+            "name": "withdraw",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "shares",
+                    "type": "U256"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "Bool"
+                }
+            ],
+            "endpointIndex": 14
+        }
+    ]
+}

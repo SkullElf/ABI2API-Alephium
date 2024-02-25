@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Contract API Manager</title>
+    <link rel="icon" type="image/png" size="32x32" href="https://explorer.alephium.org/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.52.1/swagger-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.52.1/swagger-ui-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.52.1/swagger-ui-standalone-preset.min.js"></script>
+	<style>
+        #file_upload_container, #url_input_container {
+            display: none;
+        }
+
+        #input_type option[value="file"]:checked ~ #file_upload_container {
+            display: block;
+        }
+
+        #input_type option[value="url"]:checked ~ #url_input_container {
+            display: block;
+        }
+		
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://cdn.discordapp.com/attachments/1002615966598967358/1131252032616005812/new_logo.png?ex=65e8910e&is=65d61c0e&hm=437ffbd0ccef5818fa7a8b5ff2c84c21495359544443716d28969ac47375c198&" height="30%" width="30%">
+        <h1>Smart Contract API Manager</h1>
+    </div>
+	<div class="form-container">
+        <h2>Add New API:</h2>
+        <form action="{{ url_for('add_api') }}" method="post" enctype="multipart/form-data">
+        <label for="sc_address">Smart Contract Address:</label>
+        <input type="text" id="sc_address" name="sc_address" required>
+
+        <label for="api_name">API Name:</label>
+        <input type="text" id="api_name" name="api_name" required>
+
+        <label for="input_type">Input Type:</label>
+        <select id="input_type" name="input_type" onchange="toggleInputFields()">
+            <option value="file">File</option>
+            <option value="url">URL</option>
+        </select>
+
+        <div id="file_upload_container">
+            <label for="abi_file">ABI JSON (File):</label><br />
+            <input type="file" id="abi_file" name="abi_file" accept=".json">
+        </div>
+
+        <div id="url_input_container">
+            <label for="abi_url">ABI JSON (URL):</label><br />
+            <input type="url" id="abi_url" name="abi_url">
+        </div>
+
+        <button type="submit">Add API</button>
+    </form>
+
+    </div>
+    <div class="table-container">
+        <h2>Existing APIs:</h2>
+        <table>
+    <tr>
+        <th>Name</th>
+        <th>SC Address</th>
+        <th>Remove</th>
+    </tr>
+    {% for index, api in enumerate(api_list) %}
+    <tr>
+        <td><a href="/{{ api['NAME'] }}/">{{ api['NAME'] }}</a></td>
+        <td><a href="https://explorer.alephium.org/addresses/{{ api["SCADDRESS"] }}">{{ api["SCADDRESS"] }}</a></td>
+        <td><button onclick="removeApi({{ index }})">Remove</button></td>
+    </tr>
+    {% endfor %}
+</table>
+    </div>
+    
+    <script>
+	function toggleInputFields() {
+            const inputType = document.getElementById("input_type").value;
+            const fileUploadContainer = document.getElementById("file_upload_container");
+            const urlInputContainer = document.getElementById("url_input_container");
+
+            if (inputType === "file") {
+                fileUploadContainer.style.display = "block";
+                urlInputContainer.style.display = "none";
+            } else if (inputType === "url") {
+                fileUploadContainer.style.display = "none";
+                urlInputContainer.style.display = "block";
+            }
+        }
+
+        // Call the toggleInputFields function on page load
+        window.onload = toggleInputFields;
+        function removeApi(index) {
+            if (confirm("Are you sure you want to remove this API?")) {
+                window.location.href = `/remove_api/${index}`;
+            }
+        }
+    </script>
+</body>
+</html>
