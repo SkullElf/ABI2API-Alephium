@@ -42,7 +42,3 @@ def convert_abi(abi_json):
         index += 1
     new_abi["endpoints"] = new_endpoints
     return new_abi
-
-
-def main():
-    abi_json = json.load(open("Staking.ral.json"))
