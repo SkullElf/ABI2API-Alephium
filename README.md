@@ -60,8 +60,9 @@ Open your web browser and visit http://localhost:80/NAME/ to view the Swagger UI
 Make API requests:
 You can now make GET requests to interact with your smart contract functions. Refer to the API documentation for the available endpoints and request formats.
 
-> TIP: You can use the URL parameter `smartcontractaddress=X` to override the SC address in the same environment, and query SC X using the same ABI JSON
-> TIP: The `NAME` variable is a unique identifier, so make sure it's different in each entry.
+> TIP 1: You can use the URL parameter `smartcontractaddress=X` to override the SC address in the same environment, and query SC X using the same ABI JSON.
+
+> TIP 2: The `NAME` variable is a unique identifier, so make sure it's different in each entry.
 
 ## Example
 For your convinience, a couple of APIs are already available in the system's database. Open the Manager app to interact with them.
